@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
-	<link rel="icon" href="./img/logo/bac_logo.png">
+	<link rel="icon" href="/img/logo/bac_logo.png">
 
 	<link rel="stylesheet" type="text/css" href="./styles.css">
 
@@ -169,7 +169,7 @@
 			<!-- copyright text -->
 			<div class="row pt-2">
 				<div class="col-lg-12 text-center">
-					<span>&copy <a href=""></a> All Rights Received.</span>
+					<span>&copy {{date('d-m-Y')}} <a href=""></a> All Rights Received.</span>
 				</div>
 			</div>
 		</div>
