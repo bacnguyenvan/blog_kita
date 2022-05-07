@@ -172,7 +172,7 @@
 
                             <li class="app-sidebar__heading">Forms</li>
                             <li>
-                                <a href="{{route('post.list')}}">
+                                <a href="{{route('sw.post.list')}}">
                                     <i class="metismenu-icon pe-7s-mouse">
                                     </i>Posts
                                 </a>

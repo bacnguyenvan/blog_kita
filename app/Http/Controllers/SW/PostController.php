@@ -33,7 +33,7 @@ class PostController extends Controller
                 'content_detail' => $request->content_detail
             ]);
 
-            return redirect()->route('post.list')->with([
+            return redirect()->route('sw.post.list')->with([
                 'message' => 'Update post success'
             ]); 
         }

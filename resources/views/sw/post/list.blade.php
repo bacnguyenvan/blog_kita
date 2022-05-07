@@ -56,7 +56,7 @@
                                     <td>{{$post->content}}</td>
                                     <td>{{$post->start_trip}}</td>
                                     <td>
-                                        <a href="{{route('post.show', $post->id)}}" class="btn-shadow mr-3 btn btn-warning">
+                                        <a href="{{route('sw.post.show', $post->id)}}" class="btn-shadow mr-3 btn btn-warning">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a class="btn-shadow mr-3 btn btn-danger">

@@ -23,11 +23,11 @@ Route::get('/post/{id}', [HomeController::class, 'detail'])->name('post-detail')
 Route::group([
     'prefix' => 'sw'
 ], function(){
-    Route::get('/login',[LoginController::class, 'login'])->name('login');
-    Route::get('/home',[SWHomeController::class, 'home'])->name('home');
-    Route::get('/posts',[PostController::class, 'list'])->name('post.list');
+    Route::get('/login',[LoginController::class, 'login'])->name('sw.login');
+    Route::get('/home',[SWHomeController::class, 'home'])->name('sw.home');
+    Route::get('/posts',[PostController::class, 'list'])->name('sw.post.list');
 
-    Route::match(['get', 'post'],'/posts/{id}',[PostController::class, 'show'])->name('post.show');
+    Route::match(['get', 'post'],'/posts/{id}',[PostController::class, 'show'])->name('sw.post.show');
 
     Route::post('/editor/image_upload',[EditorController::class, 'upload'])->name('post.editor.upload');	
 });
