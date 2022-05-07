@@ -83,9 +83,10 @@
         <div class="row justify-content-center">
             <!-- Share buttons -->
             <div class="col-lg-1 text-left mb-3 fixed" id="social-share">
-                <a class="btn  btn-light m-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <div class="fb-share-button" data-href="{{config('app.url')}}/post/{{$post->id}}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
+                {{-- <a class="btn  btn-light m-2" href="#"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn  btn-light m-2" href="#"><i class="fab fa-google"></i></a>
-                <a class="btn  btn-light m-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn  btn-light m-2" href="#"><i class="fab fa-twitter"></i></a> --}}
             </div>
 
             <!-- the content -->
@@ -158,6 +159,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=3003465639965429&autoLogAppEvents=1" nonce="db8JUlIf"></script>
 </body>
 
 </html>
