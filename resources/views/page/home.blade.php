@@ -7,13 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 	<!-- Fontawesome -->
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
 	<link rel="icon" href="/img/logo/bac_logo.png">
 
@@ -34,9 +32,7 @@
 				<a class="navbar-brand" href="#" style="width:20%"><img src="./img/logo/kita.png"
 						style="width:100%"></a>
 
-
 				<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
-
 				</div>
 			</div>
 		</nav>
@@ -82,69 +78,23 @@
 
 	<div class="container mt-2 mb-2 pt-5 pb-5" id="article-grid">
 		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-12 text-center">
-				<a href="./single.html">
-					<div class="article-card">
-						<div class="article-img">
-							<img src="./img/place/namdu.jpg">
-						</div>
+            @foreach($posts as $post)
+                <div class="col-xl-6 col-lg-12 text-center">
+                    <a href="{{route('post-detail', $post->id)}}">
+                        <div class="article-card">
+                            <div class="article-img">
+                                <img src="{{$post->avatar}}">
+                            </div>
 
-						<div class="article-meta text-left">
-							<h2>Nam Du - Hòn Sơn Islands, thả hồn với thiên nhiên.</h2>
-							<p>Ngày anh về với Nam Du. Hòn Dầu xanh mát vi vu bóng dừa.</p>
-							<p><i>Kiên Giang, ngày 30/04/2022</i></p>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-xl-6 col-lg-12  text-center">
-				<a href="./single.html">
-					<div class="article-card">
-						<div class="article-img">
-							<img src="./img/place/binhthuan.jpg">
-						</div>
-
-						<div class="article-meta  text-left">
-							<h2>Bình Thuận - vùng đất đầy nắng gió.</h2>
-							<p>Bình Thuận ơi, Bình Thuận hỡi! Anh về viết vội trăm lời ý thơ.</p>
-							<p><i>Bình Thuận, ngày 30/04/2021</i></p>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-xl-6 col-lg-12 text-center">
-				<a href="./single.html">
-					<div class="article-card">
-						<div class="article-img">
-							<img src="./img/place/angiang.jpg">
-						</div>
-
-						<div class="article-meta  text-left">
-							<h2>An Giang - man mác hữu tình, thật thà chất phác.</h2>
-							<p>Đất An Giang phù sa màu mỡ. Người An Giang muôn thuở hiền lành.</p>
-							<p><i>An Giang, ngày 29/04/2020</i></p>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-xl-6 col-lg-12 text-center">
-				<a href="./single.html">
-					<div class="article-card">
-						<div class="article-img">
-							<img src="./img/place/vungtau.jpg">
-						</div>
-
-						<div class="article-meta  text-left">
-							<h2>Vũng Tàu - say đắm một tình yêu.</h2>
-							<p>Biển xanh cát trắng Vũng Tàu. Dập dềnh bãi Trước, bãi Sau sóng đùa.</p>
-							<p><i>Vũng Tàu, ngày 14/04/2018</i></p>
-						</div>
-					</div>
-				</a>
-			</div>
+                            <div class="article-meta text-left">
+                                <h2>{{$post->title}}</h2>
+                                <p>{{$post->content}}</p>
+                                <p><i>{{$post->place}}, ngày {{Date('d/m/Y', strtotime($post->start_trip))}}</i></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
 		</div> <!-- Article Grid Row Ends -->
 	</div> <!-- Article Grid Container Ends -->
 
@@ -161,7 +111,6 @@
 		<div class="container ">
 			<div class="row pb-1">
 				<!-- Footer logo -->
-
 				<hr>
 			</div>
 			<hr>
@@ -174,19 +123,10 @@
 			</div>
 		</div>
 	</footer>
-
-
 	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>
