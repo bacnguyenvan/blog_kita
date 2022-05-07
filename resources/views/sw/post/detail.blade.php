@@ -56,7 +56,7 @@
                             <div class="position-relative row form-group"><label for="exampleText"
                                     class="col-sm-2 col-form-label">Content Detail</label>
                                 <div class="col-sm-10"><textarea id="content_detail" name="content_detail" 
-                                        class="form-control">{{$post->content_detail}}</textarea></div>
+                                        class="form-control">{!! $post->content_detail !!}</textarea></div>
                             </div>
                             <div class="position-relative row form-group"><label for="exampleFile"
                                     class="col-sm-2 col-form-label">Avatar</label>
@@ -106,15 +106,83 @@
 @stop
 
 @section('script')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        class MyUploadAdapter {
+            constructor(loader) {
+                this.loader = loader;
+            }
 
-    {{-- <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script> --}}
+            upload() {
+                return this.loader.file
+                    .then(file => new Promise((resolve, reject) => {
+                        this._initRequest();
+                        this._initListeners(resolve, reject, file);
+                        this._sendRequest(file);
+                    }));
+            }
 
-    CKEDITOR.replace( 'content_detail',{
-        filebrowserBrowseUrl: "{{ asset('ckfinder/ckfinder.html') }}",
-        filebrowserImageBrowseUrl: "{{ asset('ckfinder/ckfinder.html?type=Images') }}",
-        filebrowserFlashBrowseUrl: "{{ asset('ckfinder/ckfinder.html?type=Flash') }}",
-        filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
-    } );
+            abort() {
+                if (this.xhr) {
+                    this.xhr.abort();
+                }
+            }
 
+            _initRequest() {
+                const xhr = this.xhr = new XMLHttpRequest();
+
+                xhr.open('POST', "{{route('post.editor.upload', ['_token' => csrf_token() ])}}", true);
+                xhr.responseType = 'json';
+            }
+
+            _initListeners(resolve, reject, file) {
+                const xhr = this.xhr;
+                const loader = this.loader;
+                const genericErrorText = `Couldn't upload file: ${file.name}.`;
+
+                xhr.addEventListener('error', () => reject(genericErrorText));
+                xhr.addEventListener('abort', () => reject());
+                xhr.addEventListener('load', () => {
+                    const response = xhr.response;
+
+                    if (!response || response.error) {
+                        return reject(response && response.error ? response.error.message : genericErrorText);
+                    }
+
+                    resolve(response);
+                });
+
+                if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', evt => {
+                        if (evt.lengthComputable) {
+                            loader.uploadTotal = evt.total;
+                            loader.uploaded = evt.loaded;
+                        }
+                    });
+                }
+            }
+
+            _sendRequest(file) {
+                const data = new FormData();
+
+                data.append('upload', file);
+
+                this.xhr.send(data);
+            }
+        }
+
+        function MyCustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return new MyUploadAdapter(loader);
+            };
+        }
+
+        ClassicEditor
+            .create(document.querySelector('#content_detail'), {
+                extraPlugins: [MyCustomUploadAdapterPlugin],
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @stop

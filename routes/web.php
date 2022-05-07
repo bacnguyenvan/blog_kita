@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SW\EditorController;
 use App\Http\Controllers\SW\HomeController as SWHomeController;
 use App\Http\Controllers\SW\PostController;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +28,7 @@ Route::group([
     Route::get('/posts',[PostController::class, 'list'])->name('post.list');
 
     Route::match(['get', 'post'],'/posts/{id}',[PostController::class, 'show'])->name('post.show');
+
+    Route::post('/editor/image_upload',[EditorController::class, 'upload'])->name('post.editor.upload');	
 });
 
-Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
-    ->name('ckfinder_browser');
-Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
