@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('content_detail');
             $table->string('place');
             $table->date('start_trip');
+            $table->integer('view')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

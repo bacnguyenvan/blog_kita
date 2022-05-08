@@ -18,6 +18,9 @@ class HomeController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $post->view += 1;
+        $post->save();
+
         return View('page.post.detail')
         ->with('post', $post)
         ->with('post_previous', $post->previous() ?? $post->endPrevious())
