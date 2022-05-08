@@ -44,6 +44,7 @@
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Content</th>
+                                    <th>View</th>
                                     <th>Created</th>
                                     <th>Action</th>
                                 </tr>
@@ -54,6 +55,7 @@
                                     <th scope="row">{{$post->id}}</th>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->content}}</td>
+                                    <td>{{$post->view}}</td>
                                     <td>{{$post->start_trip}}</td>
                                     <td>
                                         <a href="{{route('sw.post.show', $post->id)}}" class="btn-shadow mr-3 btn btn-warning">
