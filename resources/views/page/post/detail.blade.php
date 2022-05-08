@@ -45,7 +45,7 @@
                 <div class="col-lg-6 hero-img-container">
                     <div class="hero-img">
                         <!-- hero img -->
-                        <img src="{{asset('img/hero-img-2.jpeg')}}">
+                        <img src='{{asset("$post->avatar")}}'>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                                 <p>{{$post->content}}</p>
                             </div>
                         </div>
-                        <span class="date mt-2">25th January, 2019</span>
+                        <span class="date mt-2">{{Date('jS F, Y',strtotime($post->start_trip))}}</span>
                         <div class="tags mt-2">
                             <a href=""><span class="badge badge-pill p-2 badge-light">#Travel</span></a>
                             <a href="">

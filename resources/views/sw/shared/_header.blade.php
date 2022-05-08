@@ -177,18 +177,6 @@
                                     </i>Posts
                                 </a>
                             </li>
-                            <li>
-                                <a href="forms-layouts.html">
-                                    <i class="metismenu-icon pe-7s-eyedropper">
-                                    </i>Forms Layouts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <i class="metismenu-icon pe-7s-pendrive">
-                                    </i>Forms Validation
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
