@@ -29,9 +29,10 @@ class EditorController extends Controller
     
             //Resize image here
             $thumbnailpath = public_path('storage/uploads/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(500, 150, function($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img = Image::make($thumbnailpath);
+            // ->resize(500, 150, function($constraint) {
+            //     $constraint->aspectRatio();
+            // });
             $img->save($thumbnailpath);
     
             echo json_encode([
