@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Track;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,14 @@ class HomeController extends Controller
 
         $post->view += 1;
         $post->save();
+
+        $data = [
+            'useragent' => request()->server('HTTP_USER_AGENT'),
+            'ip'    => request()->ip(),
+            'post_id' => $post->id
+        ]; 
+        
+        Track::create($data);
 
         return View('page.post.detail')
         ->with('post', $post)
