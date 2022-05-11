@@ -83,7 +83,7 @@
         <div class="row justify-content-center">
             <!-- Share buttons -->
             <div class="col-lg-1 text-left mb-3 fixed" id="social-share">
-                <div class="fb-share-button" data-href="{{config('app.url')}}/post/{{$post->id}}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
+                <div class="fb-share-button" data-href="{{config('app.url')}}/post/{{$post->slug}}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
                 {{-- <a class="btn  btn-light m-2" href="#"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn  btn-light m-2" href="#"><i class="fab fa-google"></i></a>
                 <a class="btn  btn-light m-2" href="#"><i class="fab fa-twitter"></i></a> --}}
@@ -107,7 +107,7 @@
         <div class="row">
 
             <div class="col-xl-6 col-lg-12 text-center">
-                <a href="{{route('post-detail', $post_next->id)}}">
+                <a href="{{route('post-detail', $post_next->slug)}}">
                     <div class="article-card">
                         <div class="article-img">
                             <img src='{{asset("$post_next->avatar")}}'>
@@ -122,7 +122,7 @@
             </div>
 
             <div class="col-xl-6 col-lg-12 text-center">
-                <a href="{{route('post-detail', $post_previous->id)}}">
+                <a href="{{route('post-detail', $post_previous->slug)}}">
                     <div class="article-card">
                         <div class="article-img">
                             <img src='{{asset("$post_previous->avatar")}}'>

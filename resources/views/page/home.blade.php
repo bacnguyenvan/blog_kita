@@ -80,7 +80,7 @@
 		<div class="row justify-content-center">
             @foreach($posts as $post)
                 <div class="col-xl-6 col-lg-12 text-center">
-                    <a href="{{route('post-detail', $post->id)}}">
+                    <a href="{{route('post-detail', $post->slug)}}">
                         <div class="article-card">
                             <div class="article-img">
                                 <img src="{{$post->avatar}}">

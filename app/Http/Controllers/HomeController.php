@@ -15,9 +15,9 @@ class HomeController extends Controller
         return view('page.home', $data);
     }
 
-    public function detail($id)
+    public function detail($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('slug', $slug)->first();
 
         $post->view += 1;
         $post->save();

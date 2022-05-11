@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/post/{id}', [HomeController::class, 'detail'])->name('post-detail');
+Route::get('/post/{slug}', [HomeController::class, 'detail'])->name('post-detail');
 
 Route::group([
     'prefix' => 'sw'

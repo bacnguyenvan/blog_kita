@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SW;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function list()
@@ -27,6 +27,7 @@ class PostController extends Controller
             ]);
 
             $post->update([
+                'slug' => Str::slug($request->title),
                 'title' => $request->title,
                 'content' => $request->content,
                 'place' => $request->place,
