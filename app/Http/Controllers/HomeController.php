@@ -19,6 +19,8 @@ class HomeController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
 
+        if(empty($post)) abort(404);
+
         $post->view += 1;
         $post->save();
 
