@@ -289,3 +289,6 @@ footer a {
 	}
 }
 
+figure.image img {
+    width: 100%;
+}
